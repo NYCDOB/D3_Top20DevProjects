@@ -1,0 +1,22 @@
+{"type":"FeatureCollection","features":[
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.98471,40.759055]},"properties":{"JobType":"A1","BldgType":"RESIDENTIAL: HOTELS, DORMITORIES","EstCost":179,"Boro":"MANHATTAN","Address":"1568 AIR BROADWAY"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-74.006738,40.709238]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":66,"Boro":"MANHATTAN","Address":"130 WILLIAM STREET"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-74.00113,40.755411]},"properties":{"JobType":"A2","BldgType":"BUSINESS","EstCost":66,"Boro":"MANHATTAN","Address":"550 WEST 34TH STREET"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.986065,40.716868]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":63,"Boro":"MANHATTAN","Address":"180 BROOME STREET"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.88502,40.833139]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":52,"Boro":"BRONX","Address":"1560 BOONE AVENUE"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.981954,40.752003]},"properties":{"JobType":"A1","BldgType":"BUSINESS","EstCost":49,"Boro":"MANHATTAN","Address":"455 FIFTH AVENUE"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.996112,40.759906]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":48,"Boro":"MANHATTAN","Address":"515 WEST 42ND STREET"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.836104,40.755884]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: HOTELS, DORMITORIES","EstCost":47,"Boro":"QUEENS","Address":"131-02 40 ROAD"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.961619,40.758629]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":45,"Boro":"MANHATTAN","Address":"430 EAST 58 STREET"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.946125,40.741916]},"properties":{"JobType":"A1","BldgType":"BUSINESS","EstCost":45,"Boro":"QUEENS","Address":"24-02 49TH AVENUE"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-74.013194,40.707437]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":45,"Boro":"MANHATTAN","Address":"42 TRINITY PLACE"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.973189,40.76402]},"properties":{"JobType":"A2","BldgType":"BUSINESS","EstCost":43,"Boro":"MANHATTAN","Address":"767 5TH AVENUE"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-74.010098,40.720659]},"properties":{"JobType":"A2","BldgType":"BUSINESS","EstCost":38,"Boro":"MANHATTAN","Address":"388 GREENWICH STREET"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.987019,40.745081]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":31,"Boro":"MANHATTAN","Address":"262 FIFTH AVENUE"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.909566,40.818946]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":31,"Boro":"BRONX","Address":"600 EAST 156TH STREET"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.948292,40.782597]},"properties":{"JobType":"NB","BldgType":"INSTITUTION: INCAPACITATED","EstCost":31,"Boro":"MANHATTAN","Address":"1802 SECOND AVENUE"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.897679,40.8634]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":31,"Boro":"BRONX","Address":"2519 CRESTON AVENUE"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.923688,40.753253]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: HOTELS, DORMITORIES","EstCost":25,"Boro":"QUEENS","Address":"36-20 STEINWAY STREET"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.867489,40.657676]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":25,"Boro":"BROOKLYN","Address":"10 SCHROEDERS WALK"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.891062,40.819841]},"properties":{"JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":25,"Boro":"BRONX","Address":"985 BRUCKNER BOULEVARD"}}
+]}
