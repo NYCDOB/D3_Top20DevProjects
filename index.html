@@ -135,20 +135,32 @@
 		function createPropSymbols(headers, data) {
 			sites = L.geoJson(data, {
 				pointToLayer: function (feature, latlng) {
+				var prop = feature.properties;
+				var popupContent = "<u> ADDRESS </u> <br>" + 
+								"<b>" + prop.Address + ", " + prop.Boro + "</b>" +
+								"<br> <u> BUILDING TYPE </u> <br> "+ "<b>"+prop.BldgType+"</b>" +
+								"<br> <u> ESTIMATED COST(MIL) </u> <br> "+ "<b>" +prop.EstCost+"</b>" +
+								"<br> <u> JOB TYPE </u> <br> "+"<b>"+prop.JobType+"</b>";								
+				
 					return L.circleMarker (latlng, {
 						fillColor: "#FF5500",
 						weight: 0,
 						fillOpacity: 0.5
-					}).on({
-						mouseover: function(e) {
-							this.openPopup();
-							this.setStyle({color: "yellow"});
-						},
-						mouseout: function(e) {
-							this.closePopup();
-							this.setStyle({color: "#FF5500"});
-						}
-					});
+					}).on('click', function(e){
+						this.bindPopup(popupContent).openPopup();
+					})
+					
+					
+					<!-- .on({ -->
+						<!-- mouseover: function(e) { -->
+							<!-- this.openPopup(); -->
+							<!-- this.setStyle({color: "yellow"}); -->
+						<!-- }, -->
+						<!-- mouseout: function(e) { -->
+							<!-- this.closePopup(); -->
+							<!-- this.setStyle({color: "#FF5500"}); -->
+						<!-- } -->
+					<!-- }); -->
 				}
 			}).addTo(map);
 			
