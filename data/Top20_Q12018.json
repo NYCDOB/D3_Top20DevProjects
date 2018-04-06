@@ -1,0 +1,22 @@
+{"type":"FeatureCollection", "features": [
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.881586,40.840008]},"properties":{"OBJECTID":1,"Boro":"BRONX","Address":"1932 BRYANT AVENUE","JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":46}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.995511,40.680391]},"properties":{"OBJECTID":2,"Boro":"BROOKLYN","Address":"330 SMITH STREET","JobType":"A2","BldgType":"EDUCATIONAL","EstCost":160}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-74.00076,40.572471]},"properties":{"OBJECTID":3,"Boro":"BROOKLYN","Address":"3514 SURF AVE","JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":64}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.957589,40.709667]},"properties":{"OBJECTID":4,"Boro":"BROOKLYN","Address":"277 SOUTH 5TH STREET","JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":48}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.961412,40.698503]},"properties":{"OBJECTID":5,"Boro":"BROOKLYN","Address":"347 FLUSHING AV","JobType":"NB","BldgType":"BUSINESS","EstCost":33}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.958615,40.817859]},"properties":{"OBJECTID":6,"Boro":"MANHATTAN","Address":"614 WEST 131ST STREET","JobType":"NB","BldgType":"BUSINESS","EstCost":77}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.961525,40.808663]},"properties":{"OBJECTID":7,"Boro":"MANHATTAN","Address":"530 WEST 120 STREET","JobType":"A2","BldgType":"PUBLIC BLDG - OLD CODE","EstCost":62}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.972435,40.763609]},"properties":{"OBJECTID":8,"Boro":"MANHATTAN","Address":"767 5TH AVENUE","JobType":"A2","BldgType":"BUSINESS","EstCost":52}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.959656,40.811621]},"properties":{"OBJECTID":9,"Boro":"MANHATTAN","Address":"525 WEST 122 STREET","JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":47}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.962993,40.774382]},"properties":{"OBJECTID":10,"Boro":"MANHATTAN","Address":"35 EAST 76 STREET","JobType":"A2","BldgType":"RESIDENTIAL (HOTELS)","EstCost":34}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-74.011003,40.720865]},"properties":{"OBJECTID":11,"Boro":"MANHATTAN","Address":"388 GREENWICH STREET","JobType":"A2","BldgType":"BUSINESS","EstCost":34}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-74.006386,40.727606]},"properties":{"OBJECTID":12,"Boro":"MANHATTAN","Address":"77 CHARLTON STREET","JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":33}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.968531,40.751421]},"properties":{"OBJECTID":13,"Boro":"MANHATTAN","Address":"821 1ST AVENUE","JobType":"NB","BldgType":"BUSINESS","EstCost":33}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-74.001765,40.75524]},"properties":{"OBJECTID":14,"Boro":"MANHATTAN","Address":"550 WEST 34TH STREET","JobType":"A2","BldgType":"BUSINESS","EstCost":32}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-74.015837,40.7056]},"properties":{"OBJECTID":15,"Boro":"MANHATTAN","Address":"2 WASHINGTON STREET","JobType":"A1","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":28}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.998838,40.753574]},"properties":{"OBJECTID":16,"Boro":"MANHATTAN","Address":"450 WEST 33RD STREET","JobType":"A2","BldgType":"COMMERCIAL BUILDINGS - OLD CODE","EstCost":28}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.977654,40.75582]},"properties":{"OBJECTID":17,"Boro":"MANHATTAN","Address":"390 MADISON AVENUE","JobType":"A2","BldgType":"BUSINESS","EstCost":28}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.974257,40.755251]},"properties":{"OBJECTID":18,"Boro":"MANHATTAN","Address":"277 PARK AVE","JobType":"A2","BldgType":"BUSINESS","EstCost":24}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.944193,40.747769]},"properties":{"OBJECTID":19,"Boro":"QUEENS","Address":"23-15 44 DRIVE","JobType":"NB","BldgType":"RESIDENTIAL: APARTMENT HOUSES","EstCost":148}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-73.930875,40.741575]},"properties":{"OBJECTID":20,"Boro":"QUEENS","Address":"47-25 34TH STREET","JobType":"A1","BldgType":"BUSINESS","EstCost":27}}
+]}
