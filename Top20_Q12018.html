@@ -38,8 +38,8 @@
 </style>
 <body>
 
-	<div id="map" style="width: 900px; height: 500px"></div>
-	<!-- <div id="map" style="width: 960px; height: 600px"></div> -->
+	<!-- <div id="map" style="width: 900px; height: 500px"></div> -->
+	<div id="map" style="width: 960px; height: 600px"></div>
 
 
     <svg></svg>
@@ -91,7 +91,7 @@
 		var svg = d3.select(map.getPanes().overlayPane).append("svg"),
 			g = svg.append("g").attr("class", "leaflet-zoom-hide");
 			
-		//map.scrollWheelZoom.disable();
+		map.scrollWheelZoom.disable();
 		
 		
 
