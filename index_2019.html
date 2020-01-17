@@ -14,7 +14,7 @@
 		background: rgba(255,255,255,0.8);
 		box-shadow: 0 0 15px rgba(0,0,0,0.2);
 		border-radius: 5px;
-		width: 130px;
+		width: 125px;
 }
 #legendTitle {
 		text-align: left;
@@ -28,7 +28,7 @@
 .legendCircle {
 		border-radius: 50%;
 		border: 1px solid #FF5500;
-		background: rgba(255, 85, 0, .5);
+		background: rgba(255, 85, 0, .6);
 		display: inline-block;
 }
 .legendValue {
@@ -61,10 +61,18 @@
 
 		
 		<!-- var map = L.map('map').setView([40.693703, -73.964477], 11); -->
-		var map = L.map('map').setView([40.727433, -74.020882], 11);
+		var map = L.map('map').setView([40.710104, -73.988302], 11);
 		var toolserver = L.tileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png');
 		//var stamen = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {attribution: ''}).addTo(map); /*Stamen.Toner*/
 		var stamen = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {attribution: '© <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'}).addTo(map); /*Stamen.TonerLite*/
+		//var stamen = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {attribution: ''}).addTo(map); /*CartoDB.Positron*/
+		//var stamen = L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: ''}).addTo(map); /*OpenStreeMap.Mapkin*/
+		//var stamen = L.tileLayer('http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}', {attribution: ''}).addTo(map); /*OpenMapSurfer*/
+		//var stamen = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {attribution: ''}).addTo(map); /*Esri.NatGeoWorldMap*/
+		
+		<!-- var startYear = 2007; -->
+		<!-- var endYear = 2016; -->
+		<!-- var currentYear = startYear; -->
 		
 		var commuteById = d3.map();
 			
@@ -177,30 +185,27 @@
 		}
 		
 		function calcPropRadius(attributeValue) {
-			<!-- var scaleFactor = 7; -->
-			<!-- var area = attributeValue * scaleFactor; -->
-			<!-- return Math.sqrt(area/Math.PI)*2.5; -->
-
-			//BELOW WORKS FOR THE DATA RANGE (21-428)
-			return Math.pow(attributeValue/2000,1/2)*100;
+			var scaleFactor = 2;
+			var area = attributeValue * scaleFactor;
+			return Math.sqrt(area/Math.PI)*1.5;
 		}
 		
 		function createLegend(min, max) {
-			if (min < 21) {
-				min = 21;
+			if (min < 32) {
+				min = 32;
 			}
 			
 			function roundNumber(inNumber) {
 				return (Math.round(inNumber/10) * 10);
 			}
 			
-			var legend = L.control( { position: "bottomleft" } );
+			var legend = L.control( { position: "topleft" } );
 			
 			legend.onAdd = function(map) {
 				var legendContainer = L.DomUtil.create("div", "legend");
 				var symbolsContainer = L.DomUtil.create("div", "symbolsContainer");
-				//var classes = [min, Math.round((max-min)/2), max]; //NEEDED TO HARDCODE VALUE (BELOW).
-				var classes = [min, 162, max];
+				<!-- var classes = [roundNumber(min), roundNumber((max-min)/2), roundNumber(max)]; -->
+				var classes = [min, Math.round((max-min)/2), max];
 				var legendCircle;
 				var lastRadius = 0;
 				var currentRadius;
@@ -226,7 +231,6 @@
 					$(symbolsContainer).append(legendCircle);
 					
 					lastRadius = currentRadius;
-					console.log(classes[i]);
 				}
 				
 				$(legendContainer).append(symbolsContainer);
@@ -238,7 +242,6 @@
 				legend.addTo(map);
 				
 			}
-			
 	}	
     </script>
 </body>
