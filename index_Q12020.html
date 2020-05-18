@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Top 20 Development Projects</title>
+    <meta charset="utf-8" />
+	<link rel="stylesheet" href="leaflet.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="style2.css" type="text/css" media="screen" />	
+</head>
+<style>
+.legend {
+		padding: 6px 10px;
+		font: 14px/16px Arial, Helvetica, sans-serif;
+		background: white;
+		background: rgba(255,255,255,0.8);
+		box-shadow: 0 0 15px rgba(0,0,0,0.2);
+		border-radius: 5px;
+		width: 130px;
+}
+#legendTitle {
+		text-align: left;
+		margin-bottom: 15px;
+		font-variant: small-caps;
+}
+.symbolsContainer {
+		float: left;
+		margin-left: 50px;
+}
+.legendCircle {
+		border-radius: 50%;
+		border: 1px solid #FF5500;
+		background: rgba(255, 85, 0, .6);
+		display: inline-block;
+}
+.legendValue {
+		position: absolute;	
+		right: 8px;
+}
+</style>
+<body>
+
+	<!-- <div id="map" style="width: 900px; height: 500px"></div> -->
+	<div id="map" style="width: 960px; height: 600px"></div>
+
+
+    <svg></svg>
+	</div>
+
+	
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="./js/leaflet.js"></script>
+	<script src="./js/leaflet.ajax.min.js"></script>
+	<script src="jquery-2.1.1.min.js"></script>
+	<script src="static/chroniton.js"></script>
+	<link href="static/chroniton.css" rel="stylesheet">
+	
+	<link href="build/nv.d3.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+    <script src="build/nv.d3.js"></script>
+
+    <script>
+
+		
+		<!-- var map = L.map('map').setView([40.693703, -73.964477], 11); -->
+		var map = L.map('map').setView([40.727433, -74.020882], 11);
+		var toolserver = L.tileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png');
+		//var stamen = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {attribution: ''}).addTo(map); /*Stamen.Toner*/
+		var stamen = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {attribution: '© <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'}).addTo(map); /*Stamen.TonerLite*/
+		
+		var commuteById = d3.map();
+			
+		var projection = d3.geo.mercator()
+
+		onload = ready();
+		
+		var info = L.control();
+		info.onAdd = function(map) {
+			this._div = L.DomUtil.create('div', 'info');
+			return this._div;
+		};
+		info.addTo(map);
+		
+		// Add an SVG element to Leaflet’s overlay pane
+		var svg = d3.select(map.getPanes().overlayPane).append("svg"),
+			g = svg.append("g").attr("class", "leaflet-zoom-hide");
+			
+		map.scrollWheelZoom.disable();
+		
+		
+
+		
+	function ready() {	
+		$.getJSON("data/Top20_Q12020.json")
+				.done(function(data) {
+						var info = processData(data);
+						createPropSymbols(info.headers, data);
+						createLegend(info.min,info.max);
+				})
+		.fail(function() { alert("There has been a problem loading the data.")});
+		
+		function processData(data) {
+			var headers = [];
+			var min = Infinity;
+			var max = -Infinity;
+			
+			for (var feature in data.features) {
+				var properties = data.features[feature].properties;
+				for (var attribute in properties) {
+					if (attribute == "EstCost") {
+						if ( $.inArray(attribute, headers) === -1) {
+							headers.push(attribute);
+						}
+						if (properties[attribute] < min) {
+							min = properties[attribute];
+						}
+						if (properties[attribute] > max) {
+							max = properties[attribute];
+						}
+					}
+				}
+			}
+			return {
+				headers : headers,
+				min : min,
+				max : max
+			}
+		}
+		
+		function createPropSymbols(headers, data) {
+			sites = L.geoJson(data, {
+				pointToLayer: function (feature, latlng) {
+				var prop = feature.properties;
+				var popupContent = "<u> ADDRESS </u> <br>" + 
+								"<b>" + prop.Address + ", " + prop.Boro + "</b>" +
+								"<br> <u> BUILDING TYPE </u> <br> "+ "<b>"+prop.BldgType+"</b>" +
+								"<br> <u> ESTIMATED COST(MIL) </u> <br> "+ "<b>" +prop.EstCost+"</b>" +
+								"<br> <u> JOB TYPE </u> <br> "+"<b>"+prop.JobType+"</b>";								
+				
+					return L.circleMarker (latlng, {
+						fillColor: "#FF5500",
+						weight: 0,
+						fillOpacity: 0.5
+					}).on('click', function(e){
+						this.bindPopup(popupContent).openPopup();
+					})
+					
+					
+					<!-- .on({ -->
+						<!-- mouseover: function(e) { -->
+							<!-- this.openPopup(); -->
+							<!-- this.setStyle({color: "yellow"}); -->
+						<!-- }, -->
+						<!-- mouseout: function(e) { -->
+							<!-- this.closePopup(); -->
+							<!-- this.setStyle({color: "#FF5500"}); -->
+						<!-- } -->
+					<!-- }); -->
+				}
+			}).addTo(map);
+			
+			updatePropSymbols(headers[0]);
+		}
+		
+		function updatePropSymbols(headers) {
+			sites.eachLayer(function(layer) {
+				var props = layer.feature.properties;
+				var radius = calcPropRadius(props[headers]);
+								
+				var popupContent = "<u> ADDRESS </u> <br>" + 
+								"<b>" + props.Address + ", " + props.Boro + "</b>" +
+								"<br> <u> BUILDING TYPE </u> <br> "+ "<b>"+props.BldgType+"</b>" +
+								"<br> <u> ESTIMATED COST(MIL) </u> <br> "+ "<b>" +props.EstCost+"</b>" +
+								"<br> <u> JOB TYPE </u> <br> "+"<b>"+props.JobType+"</b>";								
+				
+				layer.setRadius(radius);
+				layer.bindPopup(popupContent, { offset: new L.Point(0,-radius) });
+			});
+		}
+		
+		function calcPropRadius(attributeValue) {
+			<!-- var scaleFactor = 7; -->
+			<!-- var area = attributeValue * scaleFactor; -->
+			<!-- return Math.sqrt(area/Math.PI)*2.5; -->
+
+			//BELOW WORKS FOR THE DATA RANGE (26-137)
+			return Math.pow(attributeValue/2000,1/2)*100;
+		}
+		
+		function createLegend(min, max) {
+			if (min < 26) {
+				min = 26;
+			}
+			
+			function roundNumber(inNumber) {
+				return (Math.round(inNumber/10) * 10);
+			}
+			
+			var legend = L.control( { position: "bottomleft" } );
+			
+			legend.onAdd = function(map) {
+				var legendContainer = L.DomUtil.create("div", "legend");
+				var symbolsContainer = L.DomUtil.create("div", "symbolsContainer");
+				//var classes = [min, Math.round((max-min)/2), max]; //NEEDED TO HARDCODE VALUE (BELOW).
+				var classes = [min, 66, max];
+				var legendCircle;
+				var lastRadius = 0;
+				var currentRadius;
+				var margin;
+				
+				L.DomEvent.addListener(legendContainer, "mousedown", function(e) {
+					L.DomEvent.stopPropagation(e);
+				});
+				
+				$(legendContainer).append("<h2 id='legendTitle'>Estimated Cost (Mil)</h2>");
+				
+				for (var i = 0; i <= classes.length-1; i++) {
+					legendCircle = L.DomUtil.create("div", "legendCircle");
+					currentRadius = calcPropRadius(classes[i]);
+					margin = -currentRadius - lastRadius - 2;
+					
+					$(legendCircle).attr("style", "width: " + currentRadius*2 +
+							"px; height: " + currentRadius*2 +
+							"px; margin-left: " + margin + "px" );
+					
+					$(legendCircle).append("<span class='legendValue'>"+classes[i]+"</span>");
+					
+					$(symbolsContainer).append(legendCircle);
+					
+					lastRadius = currentRadius;
+					console.log(classes[i]);
+				}
+				
+				$(legendContainer).append(symbolsContainer);
+				
+				return legendContainer;
+				
+				};
+				
+				legend.addTo(map);
+				
+			}
+			
+	}	
+    </script>
+</body>
+</html>
